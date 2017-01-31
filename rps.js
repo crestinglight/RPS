@@ -27,8 +27,8 @@ function getPlayer1(){
 			getPlayer2(lowerP1Weapon);
 		}
 		else {
-			console.log("Your options are rock, paper, or scissors. Try again slugger.")
-			getPlayer1();
+			snarkyResponses(lowerP1Weapon);
+			startGame();
 		}
 	});
 }
@@ -45,7 +45,7 @@ function getPlayer2(p1weaponChoice){
 			whoWon(p1weaponChoice, lowerP2Weapon);
 		}
 		else {
-			console.log("Seriously, your only options are rock, paper, or scissors. Try again.");
+			snarkyResponses(lowerP2Weapon);
 			getPlayer2(p1weaponChoice);
 		}
 	});
@@ -77,8 +77,9 @@ function whoWon(p1weapon, p2weapon){
 
 //Checks the validity of the players' answers. If they didn't type in rock, paper, or scissors, returns an invalid answer.
 function checkValidity(weapon){
+	lowerWeapon = weapon.toLowerCase();
 
-	if (weapon == "rock" || weapon == "paper" || weapon == "scissors"){
+	if (lowerWeapon == "rock" || lowerWeapon == "paper" || lowerWeapon == "scissors"){
 		return true;
 	}
 	else {
@@ -118,6 +119,41 @@ function keepScore(){
 	}
 }
 
+function snarkyResponses(weapon){
+	if (weapon == "clown"){
+		console.log("Clowns to the left of me, jokers to the right, here I am stuck in this game with someone who doesn't know how to play Rock-Paper-Scissors.");
+	}
+
+	if (weapon == "gun"){
+		console.log("You feelin' lucky punk? Go ahead, make a better choice.")
+	}
+
+	if (weapon == "barracuda"){
+		console.log("I can see your Heart is in the right place, but you can still only choose from rock, paper, or scissors.");
+	}
+
+	if (weapon == "knife"){
+		console.log("Haha, that's not a knife. Now THIS is a knife....");
+	}
+
+	if (weapon == "food"){
+		console.log("Do you want ants?! Because that's how you ants!");
+	}
+
+	if (weapon == "scythe"){
+		console.log("You may not fear the reaper, but he's not allowed to play rock, paper, scissors.");
+	}
+
+	if (weapon == "wizard"){
+		console.log("That def, dumb, and blind kid sure plays a mean pinball, but we're playing rock, paper, scissors.")
+	}
+
+	else {
+		console.log("Your options are rock, paper, or scissors. Try again slugger.");
+	}
+}
+
+//*************AUTOMATED TESTING*********
 // testWinner();
 // function testWinner(){
 
@@ -131,9 +167,23 @@ function keepScore(){
 // 	}
 // }
 
+// testCheckValidity();
 
+// function testCheckValidity(){
+// 	var testWeapon01 = "Harpoon Gun";
+// 	var testWeapon02 = "PaPEr";
+// 	var testWeapon03 = "Rockk";
+// 	resultz = checkValidity(testWeapon03);
+// 	console.log(resultz);
+// }
 
+// testAddScore();
+// function testAddScore(){
 
+// 	winner = "Player 2 wins!!!";
+// 	addScore(winner);
+// 	console.log("Player 2 score: " + player2Score);
+// }
 
 
 
