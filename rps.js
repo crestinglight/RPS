@@ -31,16 +31,27 @@ function getPlayer2(p1weaponChoice){
 
 	console.log("Player 2, choose your weapon!");
 	prompt.get(['P2Weapon'], function (err, result) {
-
-	console.log('Player 2, you chose ' + result.P2Weapon + '!');
-	checkValidity();
-	whoWon();
+		var lowerP2Weapon = result.P2Weapon.toLowerCase();
+		var isAnswerValid = checkValidity(lowerP2Weapon);
+		if (isAnswerValid == true){
+			console.log('Player 2, you chose ' + result.P2Weapon + '!');
+			whoWon(p1weaponChoice, lowerP2Weapon);
+		}
+		else {
+			console.log("Seriously, your only options are rock, paper, or scissors. Try again.");
+			getPlayer2(p1weaponChoice);
+		}
 	});
 }
 
-function whoWon(){
+function whoWon(p1weapon, p2weapon){
 
-	console.log("You're all winners here!")
+	if (p1weapon == p2weapon){
+		console.log("It's a tie!");
+	}
+	else {
+		console.log("I dunno who won...");
+	}
 }
 
 function checkValidity(weapon){
