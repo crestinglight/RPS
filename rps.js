@@ -48,9 +48,12 @@ function whoWon(p1weapon, p2weapon){
 
 	if (p1weapon == p2weapon){
 		console.log("It's a tie!");
+	}	
+	if ((p1weapon == "rock" && p2weapon == "scissors") || (p1weapon == "scissors" && p2weapon == "paper") || (p1weapon == "paper" && p2weapon == "rock")){
+		console.log("Player 1 wins!!!");
 	}
-	else {
-		console.log("I dunno who won...");
+	if ((p2weapon == "rock" && p1weapon == "scissors") || (p2weapon == "scissors" && p1weapon == "paper") || (p2weapon == "paper" && p1weapon == "rock")){
+		console.log("Player 2 wins!!!");
 	}
 }
 
