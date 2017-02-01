@@ -120,36 +120,37 @@ function keepScore(){
 }
 
 function snarkyResponses(weapon){
-	if (weapon == "clown"){
-		console.log("Clowns to the left of me, jokers to the right, here I am stuck in this game with someone who doesn't know how to play Rock-Paper-Scissors.");
-	}
+	switch (weapon){
+		case "clown":
+			console.log("Clowns to the left of me, jokers to the right, here I am stuck in this game with someone who doesn't know how to play Rock-Paper-Scissors.");
+		break;
 
-	if (weapon == "gun"){
-		console.log("You feelin' lucky punk? Go ahead, make a better choice.")
-	}
+		case "gun":
+			console.log("You feelin' lucky punk? Go ahead, make a better choice.");
+		break;
 
-	if (weapon == "barracuda"){
-		console.log("I can see your Heart is in the right place, but you can still only choose from rock, paper, or scissors.");
-	}
+		case "barracuda":
+			console.log("I can see your Heart is in the right place, but you can still only choose from rock, paper, or scissors.");
+		break;
 
-	if (weapon == "knife"){
-		console.log("Haha, that's not a knife. Now THIS is a knife....");
-	}
+		case "knife":
+			console.log("Haha, that's not a knife. Now THIS is a knife....");
+		break;
 
-	if (weapon == "food"){
-		console.log("Do you want ants?! Because that's how you ants!");
-	}
+		case "food":
+			console.log("Do you want ants?! Because that's how you ants!");
+		break;
 
-	if (weapon == "scythe"){
-		console.log("You may not fear the reaper, but he's not allowed to play rock, paper, scissors.");
-	}
+		case "scythe":
+			console.log("You may not fear the reaper, but he's not allowed to play rock, paper, scissors.");
+		break;
 
-	if (weapon == "wizard"){
-		console.log("That def, dumb, and blind kid sure plays a mean pinball, but we're playing rock, paper, scissors.")
-	}
-
-	else {
-		console.log("Your options are rock, paper, or scissors. Try again slugger.");
+		case "wizard":
+		console.log("That def, dumb, and blind kid sure plays a mean pinball, but we're playing rock, paper, scissors.");
+		break;
+	
+		default:
+			console.log("Your options are rock, paper, or scissors. Try again slugger.");
 	}
 }
 
