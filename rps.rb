@@ -110,12 +110,16 @@ def keepScore
 	if $player1Score < 5 && $player2Score < 5
 		puts "The score is currently " + $player1Score.to_s + " to " + $player2Score.to_s + "."
 		startGame
+	end
 
-	elsif $player1Score === 5 && $player2Score < 5
+	if $player1Score === 5 && $player2Score < 5
 		p1Wins
+	end
 
-	elsif $player1Score < 5 && $player2Score === 5
+	if $player1Score < 5 && $player2Score === 5
+		
 		p2Wins
+		
 	end
 end
 
