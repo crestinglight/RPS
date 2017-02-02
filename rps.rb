@@ -1,5 +1,4 @@
-$player1Score = 0
-$player2Score = 0
+
 
 
 
@@ -86,44 +85,42 @@ def addScore(winResult)
 	if winResult == "Player 1 wins!!!"
 		$player1Score = $player1Score + 1
 		keepScore
-		return $player1Score
 
 	end
 
 	if winResult == "Player 2 wins!!!"
 		$player2Score = $player2Score + 1
 		keepScore
-		return $player2Score
 	end
 end
 
 def p1Wins
 	p2score = $player2Score.to_s
-	puts ("Player 1 won, with a score of 5 to " + p2score + "!")
+	puts "Player 1 won, with a score of 5 to " + p2score + "!"
 end
 
 def p2Wins
 	p1score = $player1Score.to_s
-	puts ("Player 2 won, with a score of 5 to " + p1score + "!")
+	#p2score = $player2Score.to_s
+	puts "Player 2 won, with a score of 5 to " + p1score + "!"
 end
 
 def keepScore
-
+	
 	if $player1Score < 5 && $player2Score < 5
 		puts "The score is currently " + $player1Score.to_s + " to " + $player2Score.to_s + "."
 		startGame
-	end
 
-	if $player1Score.to_i === 5 && $player2Score.to_i < 5
+	elsif $player1Score === 5 && $player2Score < 5
 		p1Wins
-	end
 
-	if $player1Score.to_i < 5 && $player2Score.to_i === 5
+	elsif $player1Score < 5 && $player2Score === 5
 		p2Wins
 	end
 end
 
-
+$player1Score = 0
+$player2Score = 0
 
 #Begins the def that runs the program, starting the game.
 startGame
