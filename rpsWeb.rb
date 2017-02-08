@@ -1,121 +1,115 @@
-$player1Score = 0
-$player2Score = 0
 
-#Start game def. Starts by telling player 1 to choose a weapon, then moves on to get their input.
-# def startGame
-# 	puts "Player 1, choose your weapon!"
-# 	getPlayer1
-# end
+#Defining a new class called "Round". This will contain all of our information for each round of rock, paper, scissors, including which weapons were chosen, who won the round, and what the series score is at any given time during the round.
+class Round
 
-#Gets player 1's input. Checks the validity of their answer. If the answer is valid, moves on to player 2. If not, tells them their options and restarts the def.
-# def getPlayer1(p1choice)
-
-# 	p1weapon = gets.chomp
-		
-# 	lowerP1Weapon = p1weapon.downcase
-# 	isAnswerValid = checkValidity(lowerP1Weapon)
-# 	if isAnswerValid === true
-# 		puts "Player 1, you chose " + lowerP1Weapon + "."
-# 		getPlayer2(lowerP1Weapon)
-
-# 	else 
-# 		puts "Wrong answer, try again."
-# 		startGame
-# 	end
-# end
-
-# #Gets player 2's input. Calls to check the validity of the answer. If the answer is valid, moves on to decide who won. If not, tells them their options and restarts the def.
-# def getPlayer2(p1choice)
-
-# 	puts "Player 2, choose your weapon!"
-# 	p2weapon = gets.chomp
-# 	lowerP2Weapon = p2weapon.downcase
-# 	isAnswerValid = checkValidity(lowerP2Weapon)
-# 	if isAnswerValid === true
-# 		puts "Player 2, you chose " + lowerP2Weapon + "."
-# 		whoWon(p1weaponChoice, lowerP2Weapon)
-
-# 	else
-# 		puts "Wrong answer, try again."
-# 		getPlayer2(p1weaponChoice)
-# 	end
-# end
-
-#def which looks at the choices the players made and determines a winner. If they chose the same, they tied!
-def whoWon(p1weapon, p2weapon)
-
-	if (p1weapon === p2weapon) && (p1weapon != nil) && (p2weapon != nil)
-		winnerResult = "It's a tie!"
-		#startGame
-		return winnerResult
-	end	
-
-	if (p1weapon === "rock" && p2weapon === "scissors") || (p1weapon === "scissors" && p2weapon === "paper") || (p1weapon === "paper" && p2weapon === "rock")
-		winnerResult = "Player 1 wins!!!"
-		addScore(winnerResult)
-		return winnerResult
+	#Just sets a variable of the series that we are in, passing the series information into the round.
+	def setseries(series)
+		@series = series
 	end
 
-	if (p2weapon === "rock" && p1weapon === "scissors") || (p2weapon === "scissors" && p1weapon === "paper") || (p2weapon === "paper" && p1weapon === "rock")
-		winnerResult = "Player 2 wins!!!"
-		addScore(winnerResult)
-		return winnerResult
+	#This method decides who won the round. The information being passed in is which weapon player 1 and player 2 chose, whether the round was a tie, and who won so long as it is not a tie. The method then continues on to "addScore", which will add the player's win to the series score.
+	def whoWon(p1weapon, p2weapon)
+
+		if (p1weapon === p2weapon) && (p1weapon != nil) && (p2weapon != nil)
+			@winResult = 0
+			#startGame
+			return @winResult
+		end	
+
+		if (p1weapon === "rock" && p2weapon === "scissors") || (p1weapon === "scissors" && p2weapon === "paper") || (p1weapon === "paper" && p2weapon === "rock")
+			@winResult = 1
+			addScore
+			return @winResult
+		end
+
+		if (p2weapon === "rock" && p1weapon === "scissors") || (p2weapon === "scissors" && p1weapon === "paper") || (p2weapon === "paper" && p1weapon === "rock")
+			@winResult = 2
+			addScore
+			return @winResult
+		end
+	end
+
+	def winnerResult
+		return @winResult
+	end
+
+	def addScore
+
+		if @winResult == 1
+			@series.incrementP1Score
+
+		end
+
+		if @winResult == 2
+			@series.incrementP2Score
+			
+		end
+	end
+
+	def displayWinner
+		if @winresult == 0
+			return "It's a tie!"
+		end
+		if @winresult == 1
+			return "Player 1 wins!"
+		end
+		if @winresult == 2
+			return "Player 2 wins!"
+		end
 	end
 end
 
-# #Checks the validity of the players' answers. If they didn't type in rock, paper, or scissors, returns an invalid answer.
-# def checkValidity(weapon)
-# 	lowerWeapon = weapon.downcase
+class Series
 
-# 	if lowerWeapon === "rock" || lowerWeapon === "paper" || lowerWeapon === "scissors"
-# 		return true
-
-# 	else
-# 		return false
-# 	end
-# end
-
-def addScore(winResult)
-
-	if winResult == "Player 1 wins!!!"
-		$player1Score = $player1Score + 1
-		# keepScore
-
+	def setPlayer1Score
+		@player1Score = 0
 	end
 
-	if winResult == "Player 2 wins!!!"
-		$player2Score = $player2Score + 1
-		# keepScore
+	def setPlayer2Score
+		@player2Score = 0
 	end
-end
 
-# def p1Wins
-# 	p2score = $player2Score.to_s
-# 	$player1Score = 0
-# 	$player2Score = 0
-# end
+	def incrementP1Score
+		@player1Score += 1
+	end
 
-# def p2Wins
-# 	p1score = $player1Score.to_s
-# 	#p2score = $player2Score.to_s
-# 	$player1Score = 0
-# 	$player2Score = 0
-# end
+	def incrementP2Score
+		@player2Score += 1
+	end
 
-def keepScore
-	
-	if $player1Score < 3 && $player2Score < 3
-		#startGame
+	def player1Score
+		return @player1Score
+	end
 
-	# elsif $player1Score === 5 && $player2Score < 5
-	# 	p1Wins
+	def player2Score
+		return @player2Score
+	end
 
-	# elsif $player1Score < 5 && $player2Score === 5
-	# 	p2Wins
+	def p1
+
+	def whoWonSeries
+		if @player1Score == 3
+			return 1
+		end
+		if @player2Score == 3
+			return 2
+		end
+	end
+
+	def gameOver
+		whoWonSeries != nil
 	end
 end
 
 
 
-#Begins the def that runs the program, starting the game.
-#startGame
+
+
+
+
+
+
+
+
+
+
